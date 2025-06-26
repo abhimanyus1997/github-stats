@@ -484,7 +484,7 @@ Languages:
         additions = 0
         deletions = 0
         for repo in await self.repos:
-            r = await self.queries.query_rest(f"/repos/{repo}/stats/contributors")
+            r = await self.queries.query_rest(f"/user/repos/{repo}/stats/contributors")
             for author_obj in r:
                 # Handle malformed response from the API by skipping this repo
                 if not isinstance(author_obj, dict) or not isinstance(
@@ -513,7 +513,7 @@ Languages:
 
         total = 0
         for repo in await self.repos:
-            r = await self.queries.query_rest(f"/repos/{repo}/traffic/views")
+            r = await self.queries.query_rest(f"/user/repos/{repo}/traffic/views")
             for view in r.get("views", []):
                 total += view.get("count", 0)
 
